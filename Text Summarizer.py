@@ -3,7 +3,6 @@ import re
 from heapq import nlargest
 import gensim #version 3.8.3 or older
 from spacy.lang.en.stop_words import STOP_WORDS
-import pdb
 nlp = spacy.load("en_core_web_sm")
 
 
@@ -51,7 +50,7 @@ def summarizer(): #creates 2 summaries , first using spacy and second using gens
 
     final_summary1 = [word.text for word in summary1]
     final_summary1 = " ".join(final_summary1)
-    final_summary1 = re.sub("\n"," ",final_summary1) #final summary 1
+    final_summary1 = re.sub("\n"," ",final_summary1) #spacy summary 
 
 
     ltext=[text]
@@ -61,7 +60,7 @@ def summarizer(): #creates 2 summaries , first using spacy and second using gens
     
     final_summary2=" ".join(summary2)
 
-    final_summary2=re.sub("\n"," ",final_summary2) #final summary 2
+    final_summary2=re.sub("\n"," ",final_summary2) #gensim summary
 
     if len(final_summary1)>0:
         print("\nSummary created using spacy:\n",final_summary1)
